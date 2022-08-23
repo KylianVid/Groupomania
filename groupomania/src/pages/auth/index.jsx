@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import colors from '../../utils/styles/colors'
 import { StyledLink } from '../../utils/styles/Atoms'
-import { useTheme } from '../../utils/hooks'
+import { useFetch, useTheme } from '../../utils/hooks'
 import Icon from '../../assets/icon-left-font.svg'
 import EmailInput from '../../components/Auth/EmailInput'
 import PassWordInput from '../../components/Auth/PasswordInput'
@@ -91,6 +91,12 @@ const Switchbox = styled.button`
 function Connexion() {
     const { theme } = useTheme()
     const methodAuth= true; //true == connexion / false == inscription
+
+    const { data, isLoading, error } = useFetch(`http://localhost:4000/User`)
+
+    if (error) {
+        return <span>Il y a un problème</span>
+    }
 
     return (
         <ConnexionWrapper>    
