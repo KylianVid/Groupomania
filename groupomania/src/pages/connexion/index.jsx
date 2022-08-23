@@ -3,6 +3,8 @@ import colors from '../../utils/styles/colors'
 import { StyledLink } from '../../utils/styles/Atoms'
 import { useTheme } from '../../utils/hooks'
 import Icon from '../../assets/icon-left-font.svg'
+import EmailInput from '../../components/EmailInput'
+import PassWordInput from '../../components/PasswordInput'
 
 const ConnexionWrapper = styled.div`
     display: flex;
@@ -39,19 +41,31 @@ const BoxConnexion = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-item: center;
-    width: 60%;
+    align-items: center;
+    width: 50%;
     height: 50%;
-    background-color: green;
-    border-radius: 20px
+    background-color: ${colors.secondary};
+    border: 4px solid ${colors.tertiary}; //changer colour en fonction du theme
+    border-radius: 10px;
+    overflow: hidden;
 `
 
-const formulaireConnexion = styled.input`
-    
+const FormulaireConnexion = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+    width: 100%;
+    height: 60%;
+    background-color: transparent;
 `
 
 const SwitchConnexion = styled.button`
-
+    display: flex;
+    width: 100%;
+    height: 40%;
+    background-color: red;
 `
 
 //création d'un formulaire email + mdp
@@ -67,7 +81,13 @@ function Connexion() {
             </ConnexionHeader>
             <BoxWrapper theme={theme}>
                 <BoxConnexion>
-                    
+                    <FormulaireConnexion>
+                        <EmailInput/>
+                        <PassWordInput/>
+                    </FormulaireConnexion>
+                    <SwitchConnexion>
+                        
+                    </SwitchConnexion>
                 </BoxConnexion>
             </BoxWrapper>
         </ConnexionWrapper>
