@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import GlobalStyle from './utils/styles/GlobalStyles'
 import { ThemeProvider, SurveyProvider } from './utils/context'
-import Connexion from './pages/connexion';
+import Auth from './pages/auth';
 import Header from './components/Header';
 import Accueil from './pages/accueil';
 import Footer from './components/Footer';
@@ -16,7 +16,7 @@ root.render(
         <SurveyProvider>
         <GlobalStyle/>
         <Routes>
-          <Route exact path='/' element={ < Connexion />}/>
+          <Route exact path='/' element={ < Auth />}/>
           <Route exact path='/acceuil' element= { < Accueil />}/>
         </Routes>
         <Footer />

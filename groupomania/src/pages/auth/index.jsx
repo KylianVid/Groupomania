@@ -5,6 +5,7 @@ import { useTheme } from '../../utils/hooks'
 import Icon from '../../assets/icon-left-font.svg'
 import EmailInput from '../../components/Auth/EmailInput'
 import PassWordInput from '../../components/Auth/PasswordInput'
+import { useState } from 'react'
 
 
 const ConnexionWrapper = styled.div`
@@ -45,7 +46,7 @@ const BoxConnexion = styled.div`
     width: 70%;
     height: 50%;
     background-color: ${colors.secondary};
-    border: 4px solid ${colors.tertiary}; //changer colour en fonction du theme
+    border: 4px solid ${({ theme }) => (theme === 'light' ? colors.tertiary : colors.primary )}; //changer colour en fonction du theme
     border-radius: 10px;
     overflow: hidden;
 `
@@ -65,29 +66,23 @@ const SwitchConnexion = styled.div`
     display: flex;
     width: 100%;
     height: 20%;
-    background-color: red;
+    justify-content: center;
+    //background-color: red;
 `
-
-const Switchbox = styled.button`*
-    border: none;
-    height: 100px;
-    width: 300px;
+const Switchbox = styled.button`
+    border: 2px solid ${colors.tertiary};
+    height: 70%;
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: ${({ theme }) =>
-        theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
-    color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
-    border-radius: 30px;
+        theme === 'light' ? colors.backgroundLight : 'white'};
+    color: #000000;
     cursor: pointer;
     box-shadow: ${(props) =>
         props.isSelected ? `0px 0px 0px 2px ${colors.primary} inset` : 'none'};
-    &:first-child {
-        margin-right: 15px;
-    }
-    &:last-of-type {
-        margin-left: 15px;
-    }
+    
 `
 
 //création d'un formulaire email + mdp
@@ -95,7 +90,8 @@ const Switchbox = styled.button`*
 
 function Connexion() {
     const { theme } = useTheme()
-    
+    const methodAuth= true; //true == connexion / false == inscription
+
     return (
         <ConnexionWrapper>    
             <ConnexionHeader>
@@ -109,13 +105,16 @@ function Connexion() {
                     </FormulaireConnexion>
                     <SwitchConnexion theme={theme}>
                         <Switchbox 
+                            theme={theme}
+                            onClick= {() => methodAuth === true}
+                        >
                             
-                            >
                             Se connecter
                         </Switchbox>
                         <Switchbox 
-                            
-                            >
+                            theme={theme}
+                            onClick= {() => methodAuth === false}
+                        >  
                             S'inscrire
                         </Switchbox>
                     </SwitchConnexion>
