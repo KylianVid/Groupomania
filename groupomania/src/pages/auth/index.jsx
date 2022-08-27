@@ -92,17 +92,15 @@ function Connexion() {
     const { theme } = useTheme()
     const methodAuth= true; //true == connexion / false == inscription
 
-    const { data, isLoading, error } = useFetch(`http://localhost:4000/User`)
+   /*  const { data, isLoading, error } = useFetch(`http://localhost:8000`) */
 
-    if (error) {
+   /*  if (error) {
         return <span>Il y a un problème</span>
-    }
+    } */
 
     return (
         <ConnexionWrapper>    
-            <ConnexionHeader>
-                {/* <Logo src={Icon} /> */}
-            </ConnexionHeader>
+            <ConnexionHeader />
             <BoxWrapper theme={theme}>
                 <BoxConnexion theme={theme}>
                     <FormulaireConnexion theme={theme}>

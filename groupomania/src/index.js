@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import GlobalStyle from './utils/styles/GlobalStyles'
 import { ThemeProvider, SurveyProvider } from './utils/context'
-import Auth from './pages/auth';
-import Header from './components/Header';
-import Accueil from './pages/accueil';
+import Auth from './pages/Auth';
+import Home from './pages/Home';
+import NewPost from './pages/newPost';
 import Footer from './components/Footer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,7 +17,8 @@ root.render(
         <GlobalStyle/>
         <Routes>
           <Route exact path='/' element={ < Auth />}/>
-          <Route exact path='/acceuil' element= { < Accueil />}/>
+          <Route exact path='/Home' element= { < Home />}/>
+          <Route exact path='/Home/newPost' element={ < NewPost/> }/>
         </Routes>
         <Footer />
         </SurveyProvider>

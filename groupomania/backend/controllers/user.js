@@ -8,7 +8,9 @@ exports.signup = (req, res, next) => {
       .then(hash => {
         const user = new User({
           email: req.body.email,
-          password: hash
+          password: hash,
+          userName: 'Unknow',
+          priority: 1,
         });
         user.save()
           .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
@@ -41,3 +43,10 @@ exports.login = (req, res, next) => {
         })
         .catch(error => res.status(500).json({ error }));
  };
+
+/* exports.changeName = (req, res, next) => {
+    User.findOne({ email: req.body.email})
+        .then(user => {
+
+        })
+}; */

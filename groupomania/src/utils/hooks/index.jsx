@@ -11,8 +11,8 @@ export function useFetch(url) {
       setLoading(true)
       async function fetchData() {
         try {
-          const response = await fetch(url)
-          const data = await response.json()
+          const response = await fetch(url);
+          const data = await response.json();
           setData(data)
         } catch (err) {
           console.log(err)
